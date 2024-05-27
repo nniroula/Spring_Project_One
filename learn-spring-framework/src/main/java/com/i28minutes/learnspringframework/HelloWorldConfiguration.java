@@ -2,6 +2,7 @@ package com.i28minutes.learnspringframework;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 
 // record auto creates getters, setters, constructors etc
@@ -32,6 +33,7 @@ public class HelloWorldConfiguration {
 	
 	// use record
 	@Bean
+	@Primary
 	public Person person() {
 		//		var person = new Person("Steve", 24);
 		//		// person.age(); -> this method is available here as getter
@@ -41,7 +43,11 @@ public class HelloWorldConfiguration {
 		return new Person("Steve", 24, new Address("Bethany Place", "Aurora, Colorado"));
 	}
 	
+	/*
+	 * When multiple beans have same data type(ex. Address), make one of them @Primary to invoke them all
+	 */
 	@Bean
+	@Primary
 	public Address address() {
 		return new Address("100 Main Street", "Aurora");
 	}

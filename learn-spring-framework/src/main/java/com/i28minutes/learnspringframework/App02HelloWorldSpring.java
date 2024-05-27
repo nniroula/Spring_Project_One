@@ -55,14 +55,18 @@ public class App02HelloWorldSpring {
 		System.out.println(context.getBean("person3WithParameters"));
 		
 		// dependency of bean
-		//System.out.println(context.getBean(Address.class));
+		/*
+		 * If multiple beans have same data type, make one of them @Primary in config file
+		 */
+		System.out.println(context.getBean(Address.class));
+		System.out.println(context.getBean(Person.class));
 		
 		// list all Spring beans
 		context.getBeanDefinitionNames(); // this returns an array - use functional programming loop over array
 		
 		System.out.println();
 		System.out.println("All Spring Beans are ...................");
-		Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+		Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println); // :: is called method reference
 	
 	}
 
