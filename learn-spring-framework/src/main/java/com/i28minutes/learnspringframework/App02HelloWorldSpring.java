@@ -1,5 +1,7 @@
 package com.i28minutes.learnspringframework;
 
+import java.util.Arrays;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.i28minutes.learnspringframework.game.GameRunner;
@@ -54,6 +56,13 @@ public class App02HelloWorldSpring {
 		
 		// dependency of bean
 		//System.out.println(context.getBean(Address.class));
+		
+		// list all Spring beans
+		context.getBeanDefinitionNames(); // this returns an array - use functional programming loop over array
+		
+		System.out.println();
+		System.out.println("All Spring Beans are ...................");
+		Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
 	
 	}
 
