@@ -1,5 +1,6 @@
 package com.i28minutes.learnspringframework;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -91,5 +92,18 @@ public class HelloWorldConfiguration {
 	public Person person3WithParameters(String name, int age, Address addressForPerson3) {
 		return new Person(name, age, addressForPerson3); 
 	}
-
+	
+	
+	// use following two beans together to understand the concept of bean auto wiring with @Qualifier
+	// use Qualifier. To do this, comment @Primary. The idea of qualifier is to avoid error due to multiple candidate beans to retrieve data from
+	@Bean 
+	public Person Person5Qualifier(String name, int age, @Qualifier("address3Qualifier") Address address){
+		return new Person(name, age, address);
+	}
+	
+	@Bean(name = "address3")
+	@Qualifier("address3Qualifier")
+	public Address address3() {
+		return new Address("18535 E B P", "Aurora, CO");
+	}
 }

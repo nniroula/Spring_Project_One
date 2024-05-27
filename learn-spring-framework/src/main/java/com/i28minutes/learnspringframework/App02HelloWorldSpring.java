@@ -2,6 +2,7 @@ package com.i28minutes.learnspringframework;
 
 import java.util.Arrays;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.i28minutes.learnspringframework.game.GameRunner;
@@ -67,6 +68,11 @@ public class App02HelloWorldSpring {
 		System.out.println();
 		System.out.println("All Spring Beans are ...................");
 		Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println); // :: is called method reference
+		
+		// Qualifier
+		System.out.println();
+		System.out.println("Using @Qualifier to avoid runtime error due to multiple candidate beans ...");
+		System.out.println(context.getBean("Person5Qualifier"));
 	
 	}
 
