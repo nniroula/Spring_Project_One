@@ -53,7 +53,7 @@ public class App02HelloWorldSpring {
 		System.out.println(context.getBean("person3WithParameters"));
 		
 		// dependency of bean
-		System.out.println(context.getBean(Address.class));
+		//System.out.println(context.getBean(Address.class));
 	
 	}
 
